@@ -1,4 +1,4 @@
-package com.turtle.myapplication
+package com.turtle.multimodulehilt
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

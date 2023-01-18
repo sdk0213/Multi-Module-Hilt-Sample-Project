@@ -1,4 +1,4 @@
-package com.turtle.myapplication
+package com.turtle.multimodulehilt
 
 import org.junit.Test
 
