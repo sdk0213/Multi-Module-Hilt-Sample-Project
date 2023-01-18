@@ -6,15 +6,15 @@ plugins {
 android {
 
     namespace = "com.turtle.multimodulehilt.core.network"
-    compileSdk = 33
+    compileSdk = libs.versions.compileSdkVersion.get().toInt()
 
     defaultConfig {
 
         applicationId = "com.turtle.multimodulehilt.core.network"
-        minSdk = 21
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = libs.versions.minSdkVersion.get().toInt()
+        targetSdk = libs.versions.targetSdkVersion.get().toInt()
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.versionName.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
