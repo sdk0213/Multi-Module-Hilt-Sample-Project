@@ -1,0 +1,43 @@
+[versions]
+
+compileSdkVersion = "33"
+minSdkVersion = "21"
+targetSdkVersion = "33"
+versionCode = "1"
+versionName = "1.0"
+
+gradlePlugin = "7.4.0"
+androidGradlePlugin = "7.4.0"
+hilt = "2.44.2"
+kotlin = "1.7.21"
+material = "1.7.0"
+navigation = "2.5.3"
+
+junit = "4.13.2"
+
+[libraries]
+
+androidx-core = { module = "androidx.core:core-ktx", version = "1.9.0" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.6.0" }
+androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+androidx-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+
+google-material = { module = "com.google.android.material:material", version.ref = "material" }
+google-hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+google-hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+google-hilt-test = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
+
+androidx-test-junit = { module = "androidx.test.ext:junit", version = "1.1.5" }
+androidx-test-espresso = { module = "androidx.test.espresso:espresso-core", version = "3.5.1" }
+
+junit = { module = "junit:junit", version.ref = "junit" }
+
+# Dependencies of the included build-logic
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "gradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "gradlePlugin" }
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
