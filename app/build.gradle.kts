@@ -1,6 +1,10 @@
+// TODO: Remove once https://youtrack.jetbrains.com/issue/KTIJ-19369 is fixed
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.application")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.hilt)
     kotlin("android")
+    kotlin("kapt")
 }
 
 android {
@@ -29,7 +33,9 @@ android {
         }
     }
 
-    buildFeatures.dataBinding = true
+    buildFeatures {
+        dataBinding = true
+    }
 
     compileOptions {
         sourceCompatibility(JavaVersion.VERSION_1_8)
@@ -49,13 +55,19 @@ dependencies {
     implementation(projects.core.database)
     implementation(projects.core.model)
     implementation(projects.core.network)
-    implementation(projects.feature.bookmarks)
+    implementation(projects.feature.avengers)
+    implementation(projects.feature.heros)
+    implementation(projects.feature.news)
 
     implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
 
     implementation(libs.google.material)
+
+    implementation(libs.google.hilt)
+    kapt(libs.google.hilt.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)
