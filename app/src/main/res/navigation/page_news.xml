@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/news_fragment"
-        android:name="com.turtle.multimodulehilt.NewsFragment"
+        android:name="com.turtle.multimodulehilt.feature.news.NewsFragment"
         android:label="NewsFragment" />
 </navigation>

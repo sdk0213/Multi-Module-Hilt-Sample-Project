@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/avengers_fragment"
-        android:name="com.turtle.multimodulehilt.AvengersFragment"
+        android:name="com.turtle.multimodulehilt.feature.avengers.AvengersFragment"
         android:label="AvengersFragment" />
 </navigation>

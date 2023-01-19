@@ -2,7 +2,9 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.hilt)
     kotlin("android")
+    kotlin("kapt")
 }
 
 android {
@@ -28,6 +30,10 @@ android {
         }
     }
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     compileOptions {
         sourceCompatibility(JavaVersion.VERSION_1_8)
         targetCompatibility(JavaVersion.VERSION_1_8)
@@ -44,6 +50,9 @@ dependencies {
     implementation(libs.androidx.navigation.fragment)
 
     implementation(libs.google.material)
+
+    implementation(libs.google.hilt)
+    kapt(libs.google.hilt.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)
