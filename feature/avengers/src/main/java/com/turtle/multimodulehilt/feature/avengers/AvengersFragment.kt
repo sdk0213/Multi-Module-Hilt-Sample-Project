@@ -1,32 +1,33 @@
 package com.turtle.multimodulehilt.feature.avengers
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.turtle.multimodulehilt.core.common.base.BaseFragment
+import com.turtle.multimodulehilt.core.common.base.EventObserver
 import com.turtle.multimodulehilt.feature.avengers.databinding.FragmentAvengersBinding
 import dagger.hilt.android.AndroidEntryPoint
-
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class AvengersFragment : Fragment() {
+class AvengersFragment : BaseFragment<FragmentAvengersBinding>(R.layout.fragment_avengers) {
 
-    private var _binding: FragmentAvengersBinding? = null
-    private val binding get() = _binding!!
+    @Inject
+    lateinit var avengersAdapter: AvengersAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
+    private val viewModel: AvengersViewModel by viewModels()
 
-        _binding = FragmentAvengersBinding.inflate(inflater, container, false)
-        return binding.root
-
+    override fun init() {
+        binding.recyclerviewHeroHeroList.adapter = avengersAdapter
+        observer()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun observer() {
+
+        viewModel.heroData.observe(this@AvengersFragment) { heroList ->
+            avengersAdapter.submitList(heroList)
+        }
+
+        viewModel.errorMessage.observe(this@AvengersFragment, EventObserver{
+            showToast(it)
+        })
     }
 }

@@ -55,6 +55,8 @@ dependencies {
     implementation(projects.core.database)
     implementation(projects.core.model)
     implementation(projects.core.network)
+    implementation(projects.core.domain)
+    implementation(projects.core.data)
     implementation(projects.feature.avengers)
     implementation(projects.feature.heros)
     implementation(projects.feature.news)
@@ -68,6 +70,8 @@ dependencies {
 
     implementation(libs.google.hilt)
     kapt(libs.google.hilt.compiler)
+
+    implementation(libs.bundles.reactivex)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)

@@ -2,12 +2,13 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.hilt)
     kotlin("android")
+    kotlin("kapt")
 }
 
 android {
-
-    namespace = "com.turtle.multimodulehilt.core.common"
+    namespace = "com.turtle.multimodulehilt.core.data"
     compileSdk = libs.versions.compileSdkVersion.get().toInt()
 
     defaultConfig {
@@ -33,21 +34,24 @@ android {
         targetCompatibility(JavaVersion.VERSION_1_8)
     }
 
-    buildFeatures {
-        dataBinding = true
-    }
-
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
 dependencies {
-    implementation(libs.androidx.core)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.google.material)
+
+    implementation(projects.core.network)
+    implementation(projects.core.model)
+
+    implementation(projects.core.common)
+
+    implementation(libs.google.hilt)
+    kapt(libs.google.hilt.compiler)
+
+    implementation(libs.bundles.squareup)
 
     implementation(libs.bundles.reactivex)
-    implementation(libs.bundles.squareup)
+
     testImplementation(libs.junit)
 }

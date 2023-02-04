@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/list_item_hero_imgView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/list_item_hero_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/list_item_hero_divider"
+            tools:src="@drawable/whoishe" />
+
+        <TextView
+            android:id="@+id/list_item_hero_name"
+            app:layout_constraintStart_toEndOf="@+id/list_item_hero_imgView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/list_item_hero_urls"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            tools:text="아이언맨"/>
+
+        <TextView
+            android:id="@+id/list_item_hero_urls"
+            app:layout_constraintStart_toStartOf="@+id/list_item_hero_name"
+            app:layout_constraintEnd_toEndOf="@+id/list_item_hero_name"
+            app:layout_constraintTop_toBottomOf="@id/list_item_hero_name"
+            app:layout_constraintBottom_toTopOf="@+id/list_item_hero_comics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="url: 5"/>
+
+        <TextView
+            android:id="@+id/list_item_hero_comics"
+            app:layout_constraintStart_toStartOf="@+id/list_item_hero_name"
+            app:layout_constraintEnd_toEndOf="@+id/list_item_hero_name"
+            app:layout_constraintTop_toBottomOf="@id/list_item_hero_urls"
+            app:layout_constraintBottom_toTopOf="@+id/list_item_hero_stories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="comics: 5"/>
+
+        <TextView
+            android:id="@+id/list_item_hero_stories"
+            app:layout_constraintStart_toStartOf="@+id/list_item_hero_name"
+            app:layout_constraintEnd_toEndOf="@+id/list_item_hero_name"
+            app:layout_constraintTop_toBottomOf="@id/list_item_hero_comics"
+            app:layout_constraintBottom_toTopOf="@+id/list_item_hero_events"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="stories: 5"/>
+
+        <TextView
+            android:id="@+id/list_item_hero_events"
+            app:layout_constraintStart_toStartOf="@+id/list_item_hero_name"
+            app:layout_constraintEnd_toEndOf="@+id/list_item_hero_name"
+            app:layout_constraintTop_toBottomOf="@id/list_item_hero_stories"
+            app:layout_constraintBottom_toTopOf="@+id/list_item_hero_series"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="events: 5"/>
+
+        <TextView
+            android:id="@+id/list_item_hero_series"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/list_item_hero_imgView"
+            app:layout_constraintStart_toStartOf="@+id/list_item_hero_name"
+            app:layout_constraintEnd_toEndOf="@+id/list_item_hero_name"
+            app:layout_constraintTop_toBottomOf="@+id/list_item_hero_events"
+            tools:text="series: 5" />
+
+
+
+        <View
+            android:id="@+id/list_item_hero_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/list_item_hero_series"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

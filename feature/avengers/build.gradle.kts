@@ -45,11 +45,19 @@ android {
 }
 
 dependencies {
+
+    implementation(projects.core.common)
+    implementation(projects.core.domain)
+    implementation(projects.core.model)
+
     implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.navigation.fragment)
 
     implementation(libs.google.material)
+    implementation(libs.bundles.reactivex)
+
+    implementation(libs.glide)
 
     implementation(libs.google.hilt)
     kapt(libs.google.hilt.compiler)

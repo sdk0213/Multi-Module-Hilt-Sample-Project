@@ -1,3 +1,4 @@
 <resources>
-    <string name="main_1">Avengers</string>
+    <!-- Ui Button -->
+    <string name="hero_btn_add_to_my_favorites">Add to My Favorites</string>
 </resources>
