@@ -1,6 +1,7 @@
 buildscript {
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21")
+        classpath(libs.kotlin.gradlePlugin)
+        classpath(libs.androidx.navigationPlugin)
     }
 }
 // TODO: Remove once https://youtrack.jetbrains.com/issue/KTIJ-19369 is fixed

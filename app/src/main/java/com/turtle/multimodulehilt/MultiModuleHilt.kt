@@ -5,11 +5,4 @@ import dagger.hilt.android.HiltAndroidApp
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
 
 @HiltAndroidApp
-class MultiModuleHilt : Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-
-        RxJavaPlugins.setErrorHandler { }
-    }
-}
+class MultiModuleHilt : Application()

@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="hero"
+            type="com.turtle.multimodulehilt.core.model.Hero" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
@@ -43,6 +50,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textColor="@android:color/background_light"
+            android:text="@{hero.name}"
             tools:text="ABOMINATION (ULTIMATE)"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

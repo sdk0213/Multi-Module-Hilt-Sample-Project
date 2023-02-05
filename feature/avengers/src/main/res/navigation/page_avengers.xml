@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/page_avengers"
+    app:startDestination="@id/avengers_fragment">
+
+    <fragment
+        android:id="@+id/avengers_fragment"
+        android:name="com.turtle.multimodulehilt.feature.avengers.AvengersFragment"
+        android:label="AvengersFragment" >
+
+        <action
+            android:id="@+id/action_avengersFragment_to_avengersDetailFragment"
+            app:destination="@id/avengers_fragment_detail" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/avengers_fragment_detail"
+        android:name="com.turtle.multimodulehilt.feature.avengers.AvengersDetailFragment"
+        android:label="AvengersDetailFragment" >
+
+        <argument
+            android:name="hero"
+            app:argType="com.turtle.multimodulehilt.core.model.Hero" />
+
+    </fragment>
+
+</navigation>

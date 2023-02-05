@@ -1,22 +1,20 @@
 package com.turtle.multimodulehilt.feature.avengers
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.turtle.multimodulehilt.core.model.Hero
 import com.turtle.multimodulehilt.feature.avengers.databinding.ListItemHeroBinding
-import dagger.hilt.android.qualifiers.ActivityContext
-import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
-class AvengersAdapter @Inject constructor(
-    @ActivityContext private val context: Context
-): ListAdapter<Hero, AvengersViewHolder>(AvengersDiffCallback())  {
+class AvengersAdapter constructor(
+    private val onHeroClick: (Hero) -> Unit
+) :
+    ListAdapter<Hero, AvengersViewHolder>(AvengersDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AvengersViewHolder {
         return AvengersViewHolder(
-            context,
             ListItemHeroBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -26,7 +24,19 @@ class AvengersAdapter @Inject constructor(
     }
 
     override fun onBindViewHolder(holder: AvengersViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(onHeroClick, getItem(position))
+    }
+
+}
+
+class AvengersDiffCallback : DiffUtil.ItemCallback<Hero>() {
+
+    override fun areItemsTheSame(oldItem: Hero, newItem: Hero): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Hero, newItem: Hero): Boolean {
+        return oldItem.id == newItem.id
     }
 
 }
