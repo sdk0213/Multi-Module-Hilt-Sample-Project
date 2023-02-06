@@ -1,6 +1,7 @@
 package com.turtle.multimodulehilt.feature.avengers
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -9,7 +10,7 @@ import com.turtle.multimodulehilt.feature.avengers.databinding.ListItemHeroBindi
 import javax.inject.Inject
 
 class AvengersAdapter constructor(
-    private val onHeroClick: (Hero) -> Unit
+    private val onHeroClick: (View, Hero) -> Unit
 ) :
     ListAdapter<Hero, AvengersViewHolder>(AvengersDiffCallback()) {
 
