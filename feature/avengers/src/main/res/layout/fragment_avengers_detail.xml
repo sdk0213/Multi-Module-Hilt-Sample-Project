@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="hero"
+            type="com.turtle.multimodulehilt.core.model.Hero" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@android:color/background_dark"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageview_avengers_detail_fragment_center"
+            android:id="@+id/imageview_avengers_detail_fragment_hero"
             android:layout_width="0dp"
             android:layout_height="250dp"
             android:scaleType="fitXY"
@@ -17,6 +23,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:src="@drawable/whoishe"/>
+
+        <TextView
+            android:id="@+id/textview_avengers_detail_fragment_hero_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_margin="20dp"
+            android:textSize="18sp"
+            android:text="@{hero.name}"
+            tools:text="A-Bomb (HAS)"
+            app:layout_constraintTop_toBottomOf="@+id/imageview_avengers_detail_fragment_hero"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/textview_avengers_detail_fragment_hero_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_margin="20dp"
+            android:textSize="18sp"
+            android:text="@{hero.description}"
+            tools:text="Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...he's a teammate! Transformed by a Gamma energy explosion, A-Bomb's thick, armored skin is just as strong and powerful as it is blue. And when he curls into action, he uses it like a giant bowling ball of destruction! "
+            app:layout_constraintTop_toBottomOf="@+id/textview_avengers_detail_fragment_hero_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

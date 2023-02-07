@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.turtle.multimodulehilt.core.model.Hero
 import com.turtle.multimodulehilt.feature.avengers.databinding.ListItemHeroBinding
-import javax.inject.Inject
 
 class AvengersAdapter constructor(
-    private val onHeroClick: (View, Hero) -> Unit
+    private val onHeroClick: (View, Hero) -> Unit,
+    private val imgLoadComplete: () -> Unit,
 ) :
     ListAdapter<Hero, AvengersViewHolder>(AvengersDiffCallback()) {
 
@@ -25,7 +25,7 @@ class AvengersAdapter constructor(
     }
 
     override fun onBindViewHolder(holder: AvengersViewHolder, position: Int) {
-        holder.bind(onHeroClick, getItem(position))
+        holder.bind(onHeroClick, getItem(position), imgLoadComplete)
     }
 
 }
