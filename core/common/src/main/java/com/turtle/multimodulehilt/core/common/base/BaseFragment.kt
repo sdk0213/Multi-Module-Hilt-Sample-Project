@@ -26,15 +26,17 @@ constructor(@LayoutRes private val layoutId: Int) : Fragment() {
 
     lateinit var mContext: Context
 
-    protected lateinit var binding: B
+    private var _binding: B? = null
+
+    protected val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, layoutId, null, false)
-        binding.lifecycleOwner = this
+        _binding = DataBindingUtil.inflate(inflater, layoutId, null, false)
+        binding.lifecycleOwner = viewLifecycleOwner
         mContext = inflater.context
         return binding.root
     }
@@ -46,6 +48,7 @@ constructor(@LayoutRes private val layoutId: Int) : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _binding?.unbind()
         handler.removeCallbacksAndMessages(null)
     }
 
