@@ -16,11 +16,14 @@
 
 package com.turtle.multimodulehilt.core.network
 
-import com.turtle.multimodulehilt.core.network.model.HeroJsonBodyEntity
+import com.turtle.multimodulehilt.core.network.model.CharacterDataWrapperEntity
+import com.turtle.multimodulehilt.core.network.model.ComicDataWrapperEntity
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 
 interface MarvelDataSource {
 
-    fun getHeroes(): Single<Response<HeroJsonBodyEntity>>
+    fun getHeroes(): Single<Response<CharacterDataWrapperEntity>>
+    
+    fun getComics(id: Int): Single<Response<ComicDataWrapperEntity>>
 }

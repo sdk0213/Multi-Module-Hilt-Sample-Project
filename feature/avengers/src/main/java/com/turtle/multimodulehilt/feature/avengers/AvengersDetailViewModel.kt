@@ -1,9 +1,13 @@
 package com.turtle.multimodulehilt.feature.avengers
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.turtle.multimodulehilt.core.common.base.BaseViewModel
 import com.turtle.multimodulehilt.core.domain.usecase.GetMarvelUseCase
+import com.turtle.multimodulehilt.core.model.Comic
+import com.turtle.multimodulehilt.core.model.ComicThumbnail
 import com.turtle.multimodulehilt.core.model.Hero
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -12,22 +16,26 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 @HiltViewModel
-class AvengersViewModel @Inject constructor(
-    private val marvelUseCase: GetMarvelUseCase
+class AvengersDetailViewModel @Inject constructor(
+    private val marvelUseCase: GetMarvelUseCase,
+    savedStateHandle: SavedStateHandle
 ) : BaseViewModel() {
 
-    private val _heroData = MutableLiveData<List<Hero>>()
-    val heroData: LiveData<List<Hero>> get() = _heroData
+    private val _heroData = MutableLiveData<Hero>()
+    val heroData: LiveData<Hero> get() = _heroData
+
+    private val _comicData = MutableLiveData<List<Comic>>()
+    val comicData: LiveData<List<Comic>> get() = _comicData
 
     init {
-        getHeroesFromNetwork()
+        _heroData.value = savedStateHandle["hero"]
+        getComicById()
     }
-
-    fun getHeroesFromNetwork() {
+    fun getComicById() {
 
         compositeDisposable.add(
             marvelUseCase
-                .getHero()
+                .getComicById(id = heroData.value!!.id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
@@ -35,7 +43,7 @@ class AvengersViewModel @Inject constructor(
                         showMessage(throwable.message!!)
                     },
                     onSuccess = { result ->
-                        _heroData.value = result.data.results
+                        _comicData.value = result.data.results
                     }
                 )
         )

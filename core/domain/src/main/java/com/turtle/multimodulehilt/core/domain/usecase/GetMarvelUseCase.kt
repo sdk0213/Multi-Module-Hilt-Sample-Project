@@ -5,10 +5,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class GetMarvelHeroesUseCase @Inject constructor(
+class GetMarvelUseCase @Inject constructor(
     private val repository: MarvelRepository
 ) {
 
-    operator fun invoke() = repository.getHeroes()
+    fun getHero() = repository.getHeroes()
+
+    fun getComicById(id: Int) = repository.getComics(id = id)
 
 }

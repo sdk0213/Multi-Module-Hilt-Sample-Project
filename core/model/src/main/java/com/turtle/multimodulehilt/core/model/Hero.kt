@@ -3,17 +3,11 @@ package com.turtle.multimodulehilt.core.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-data class HeroJsonBody(
-    val code: Int = 0,
-    val status: String = "",
-    val copyright: String = "",
-    val attributionText: String = "",
-    val attributionHTML: String = "",
-    val etag: String = "",
-    val data: HeroJsonDataBody = HeroJsonDataBody()
+data class CharacterDataWrapper(
+    val data: CharacterDataContainer = CharacterDataContainer()
 )
 
-data class HeroJsonDataBody(
+data class CharacterDataContainer(
     val offset: Int = 0,
     val limit: Int = 0,
     val total: Int = 0,
@@ -24,11 +18,11 @@ data class HeroJsonDataBody(
 @Parcelize
 data class Hero(
     val id: Int = 0,
-    val name: String = "0",
-    val description: String = "0",
+    val name: String = "",
+    val description: String = "No Description",
     val modified: String = "",
     val thumbnail: HeroThumbnail = HeroThumbnail(),
-    val resourceURI: String = "0",
+    val resourceURI: String = "",
     val comics: HeroComics = HeroComics(),
     val series: HeroSeries = HeroSeries(),
     val stories: HeroStories = HeroStories(),

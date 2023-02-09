@@ -1,18 +1,34 @@
 package com.turtle.multimodulehilt.core.data.mapper
 
-import com.turtle.multimodulehilt.core.model.HeroJsonBody
-import com.turtle.multimodulehilt.core.model.HeroJsonDataBody
-import com.turtle.multimodulehilt.core.network.model.HeroJsonBodyEntity
-import com.turtle.multimodulehilt.core.network.model.HeroJsonDataBodyEntity
+import com.turtle.multimodulehilt.core.model.CharacterDataContainer
+import com.turtle.multimodulehilt.core.model.CharacterDataWrapper
+import com.turtle.multimodulehilt.core.network.model.CharacterDataContainerEntity
+import com.turtle.multimodulehilt.core.network.model.CharacterDataWrapperEntity
 
-object HeroMapper : Mapper<HeroJsonBodyEntity, HeroJsonBody> {
+object HeroMapper : Mapper<CharacterDataWrapperEntity, CharacterDataWrapper> {
 
-    override fun HeroJsonBodyEntity.toDomainModel(): HeroJsonBody {
-        return HeroJsonBody(code, status, copyright, attributionText, attributionHTML, etag, HeroJsonDataBody(data.offset, data.limit, data.total, data.count, data.results))
+    override fun CharacterDataWrapperEntity.toDomainModel(): CharacterDataWrapper {
+        return CharacterDataWrapper(
+            CharacterDataContainer(
+                data.offset,
+                data.limit,
+                data.total,
+                data.count,
+                data.results
+            )
+        )
     }
 
-    override fun HeroJsonBody.toExternalModel(): HeroJsonBodyEntity {
-        return HeroJsonBodyEntity(code, status, copyright, attributionText, attributionHTML, etag, HeroJsonDataBodyEntity(data.offset, data.limit, data.total, data.count, data.results))
+    override fun CharacterDataWrapper.toExternalModel(): CharacterDataWrapperEntity {
+        return CharacterDataWrapperEntity(
+            CharacterDataContainerEntity(
+                data.offset,
+                data.limit,
+                data.total,
+                data.count,
+                data.results
+            )
+        )
     }
 
 }
